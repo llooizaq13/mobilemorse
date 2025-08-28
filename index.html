@@ -2,16 +2,83 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Tradutor Morse API</title>
+  <title>Tradutor Morse</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: url('https://www.pandorafilmes.com.br/wp-content/uploads/2019/10/3.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
+      text-align: left;
+      width: 400px;
+        max-width: 90%;
+    }
+
+    h2, h3 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 0.5px;
+      border: 2px solid #121d2a;
+      border-radius: 8px;
+      font-size: 15px;
+      resize: none;
+      margin-bottom: 15px;
+      outline: none;
+    }
+
+    button {
+      background: #121d2a;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #508c60;
+    }
+
+    pre {
+      background: #f4f4f4;
+      border: 1px solid #121d2a;
+      padding: 12px;
+      border-radius: 8px;
+      min-height: 50px;
+      text-align: left;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  </style>
 </head>
 <body>
-  <h2>Tradutor para Código Morse</h2>
+  <div class="container">
+    <h2>🪱 Tradutor para Código Morse</h2>
 
-  <textarea id="entrada" rows="4" cols="50" placeholder="Digite seu texto aqui..."></textarea><br><br>
-  <button onclick="traduzir()">Traduzir</button>
+    <textarea id="entrada" placeholder="Digite sua mensagem aqui..."></textarea><br>
+    <button onclick="traduzir()">Traduzir</button>
 
-  <h3>Resultado:</h3>
-  <pre id="saida"></pre>
+    <h3>Sua frase codificada:</h3>
+    <pre id="saida"></pre>
+  </div>
 
   <script>
     async function traduzir() {
@@ -41,8 +108,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-

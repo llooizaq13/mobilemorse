@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Tradutor Morse API</title>
+</head>
+<body>
+  <h2>Tradutor para Código Morse</h2>
+
+  <textarea id="entrada" rows="4" cols="50" placeholder="Digite seu texto aqui..."></textarea><br><br>
+  <button onclick="traduzir()">Traduzir</button>
+
+  <h3>Resultado:</h3>
+  <pre id="saida"></pre>
+
+  <script>
+    async function traduzir() {
+      const texto = document.getElementById("entrada").value;
+      const saida = document.getElementById("saida");
+
+      try {
+        const resposta = await fetch("https://api.funtranslations.com/translate/morse.json", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams({ text: texto })
+        });
+
+        const dados = await resposta.json();
+
+        if (dados.contents) {
+          saida.textContent = dados.contents.translated;
+        } else if (dados.error) {
+          saida.textContent = "Erro: " + dados.error.message;
+        } else {
+          saida.textContent = "Erro desconhecido.";
+        }
+      } catch (erro) {
+        saida.textContent = "Falha na conexão: " + erro;
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+

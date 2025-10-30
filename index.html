@@ -1,110 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Tradutor Morse</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      background: url('https://www.pandorafilmes.com.br/wp-content/uploads/2019/10/3.jpg') no-repeat center center fixed;
-      background-size: cover;
-    }
-
-    .container {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
-      text-align: left;
-      width: 400px;
-        max-width: 90%;
-    }
-
-    h2, h3 {
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    textarea {
-      width: 100%;
-      height: 100px;
-      padding: 0.5px;
-      border: 2px solid #121d2a;
-      border-radius: 8px;
-      font-size: 15px;
-      resize: none;
-      margin-bottom: 15px;
-      outline: none;
-    }
-
-    button {
-      background: #121d2a;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background: #508c60;
-    }
-
-    pre {
-      background: #f4f4f4;
-      border: 1px solid #121d2a;
-      padding: 12px;
-      border-radius: 8px;
-      min-height: 50px;
-      text-align: left;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parasita Morse</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#ffcc00" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h2>🪱 Tradutor para Código Morse</h2>
+  <div class="app-container">
+    <h1>Parasita Morse</h1>
 
-    <textarea id="entrada" placeholder="Digite sua mensagem aqui..."></textarea><br>
-    <button onclick="traduzir()">Traduzir</button>
+    <textarea id="texto" placeholder="Digite o texto aqui..."></textarea>
 
-    <h3>Sua frase codificada:</h3>
-    <pre id="saida"></pre>
+    <div class="botoes">
+      <button id="converter">Texto → Código Morse</button>
+      <button id="traduzir">Código Morse → Texto</button>
+      <button id="abrirCamera">Converte usando a câmera</button>
+    </div>
+
+    <p id="resultado"></p>
+
+    <video id="preview" autoplay playsinline></video>
   </div>
 
-  <script>
-    async function traduzir() {
-      const texto = document.getElementById("entrada").value;
-      const saida = document.getElementById("saida");
-
-      try {
-        const resposta = await fetch("https://api.funtranslations.com/translate/morse.json", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams({ text: texto })
-        });
-
-        const dados = await resposta.json();
-
-        if (dados.contents) {
-          saida.textContent = dados.contents.translated;
-        } else if (dados.error) {
-          saida.textContent = "Erro: " + dados.error.message;
-        } else {
-          saida.textContent = "Erro desconhecido.";
-        }
-      } catch (erro) {
-        saida.textContent = "Falha na conexão: " + erro;
-      }
-    }
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>

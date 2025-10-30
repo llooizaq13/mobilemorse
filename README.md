@@ -1,4 +1,4 @@
-# 🔡 Mobile Morse — PWA
+# 🔡 Parasita Morse — PWA
 
 ![Preview](https://aventurasnahistoria.com.br/wp-content/uploads/curiosidades/plano-critico-filme-parasita-parasite.jpg)
 
